@@ -28,6 +28,7 @@ spec:
       containers:
         - name: auth-api
           image: peterhoward/books-auth-api:latest
+          imagePullPolicy: Always
           env:
             - name: MONGODB_DB
               value: users

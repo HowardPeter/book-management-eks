@@ -28,6 +28,7 @@ spec:
       containers:
         - name: books-api
           image: peterhoward/books-book-api:latest
+          imagePullPolicy: Always
           env:
             - name: MONGODB_DB
               value: books

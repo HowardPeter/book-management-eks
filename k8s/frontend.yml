@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     app: frontend
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 80
@@ -28,3 +28,13 @@ spec:
       containers:
         - name: frontend-api
           image: peterhoward/books-frontend-kube:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
