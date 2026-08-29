@@ -1,17 +1,18 @@
 name: Action CI build
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
   pull_request:
     branches:
       - main
-      - production
-    paths-ignore:
-      - '**/README.md'
-      - '**/.dockerignore'
-      - '**/.gitignore'
-      - '**/Dockerfile'
-      - '.github/workflows/deploy-ecs.yml'
-      - '/images/**'
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
   workflow_dispatch:
 
 jobs:
@@ -20,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: auth-api
+        working-directory: ./backend/auth-api
 
     env:
       JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
@@ -83,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: books-api
+        working-directory: ./backend/books-api
 
     env:
       JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
@@ -146,7 +147,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: front-end
+        working-directory: ./frontend
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
