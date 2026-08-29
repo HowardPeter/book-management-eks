@@ -39,9 +39,9 @@ The project uses Docker Compose for easy setup and deployment. Make sure you hav
      ```bash
      JWT_SECRET=your_jwt_secret_here
      ```
-   - In case of production, create .env files in `/auth-api` and `/books-api` directories:
+   - In case of production, create .env files in `./backend/auth-api` and `./backend/books-api` directories:
 
-     **auth-api/.env:**
+     **./backend/auth-api/.env:**
      ```bash
      MONGODB_USERNAME=MONGODB_ATLAS_CLUSTER_USERNAME
      MONGODB_PASSWORD=MONGODB_ATLAS_CLUSTER_PASSWORD
@@ -50,7 +50,7 @@ The project uses Docker Compose for easy setup and deployment. Make sure you hav
      APP_ENV=production
      ```
      
-     **books-api/.env:**
+     **./backend/books-api/.env:**
      ```bash
      MONGODB_USERNAME=MONGODB_ATLAS_CLUSTER_USERNAME
      MONGODB_PASSWORD=MONGODB_ATLAS_CLUSTER_PASSWORD

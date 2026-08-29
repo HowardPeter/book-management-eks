@@ -9,12 +9,12 @@ services:
 
   auth:
     build:
-      context: ./auth-api
+      context: ./backend/auth-api
       target: development
     ports:
       - '5000:5000'
     volumes:
-      - ./auth-api:/app:ro
+      - ./backend/auth-api:/app:ro
     env_file:
      - .env.local
     environment:
@@ -28,15 +28,15 @@ services:
 
   books:
     build:
-      context: ./books-api
+      context: ./backend/books-api
       target: development
     ports:
       - '5001:5001'
     volumes:
-      - ./books-api:/app:ro
-      - uploads:/app/uploads
+      - ./backend/books-api:/app:ro
+      - ./backend/uploads:/app/uploads
     env_file:
-     - .env.local
+     - ./backend/.env.local
     environment:
       - MONGODB_USERNAME=admin
       - MONGODB_PASSWORD=secret123
@@ -48,12 +48,12 @@ services:
 
   frontend:
     build:
-      context: ./front-end
+      context: ./frontend
       dockerfile: Dockerfile.dev
     ports:
       - '3000:5173'
     volumes:
-      - ./front-end:/app/:delegated
+      - ./frontend:/app/:delegated
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
