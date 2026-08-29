@@ -30,12 +30,14 @@ spec:
           image: peterhoward/books-auth-api:latest
           env:
             - name: MONGODB_DB
-              value: users_dev
+              value: users
             - name: APP_ENV
               value: production
           envFrom:
             - secretRef:
-                name: mongo-jwt-secret
+                name: mongo-connection-secret
+            - secretRef:
+                name: jwt-secret
           resources:
             requests:
               cpu: 50m

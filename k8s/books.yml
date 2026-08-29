@@ -30,12 +30,14 @@ spec:
           image: peterhoward/books-book-api:latest
           env:
             - name: MONGODB_DB
-              value: books_dev
+              value: books
             - name: APP_ENV
               value: production
           envFrom:
             - secretRef:
-                name: mongo-jwt-secret
+                name: mongo-connection-secret
+            - secretRef:
+                name: jwt-secret
           volumeMounts:
             - name: uploads-volume
               mountPath: /app/uploads
